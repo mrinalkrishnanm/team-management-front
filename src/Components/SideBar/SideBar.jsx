@@ -9,6 +9,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import BarChartIcon from '@material-ui/icons/BarChart';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -18,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     list: {
         marginTop: 40
     },
+    listItem: {
+        color: 'inherit',
+        textDecoration: 'inherit'
+    },
     drawerPaper: {
       width: 240,
     }
@@ -26,28 +31,33 @@ const useStyles = makeStyles((theme) => ({
 const listItems = [
     {
         text: "Dashboard",
-        icon: <BarChartIcon />
+        icon: <BarChartIcon />,
+        url: "dashboard"
     },{
         text: "Teammate",
-        icon: <AccessibilityIcon />
+        icon: <AccessibilityIcon />,
+        url: "teammate"
     },{
         text: "Task",
-        icon: <AssignmentIcon />
+        icon: <AssignmentIcon />,
+        url: "task"
     },{
         text: "Assign Task",
-        icon: <AssignmentIndIcon />
+        icon: <AssignmentIndIcon />,
+        url: "assign-task"
     }
 ]; 
 
 const SideBar =  () => {
-    const classes = useStyles();
+    const sideBarStyles = useStyles();
     return (
-       <Drawer variant="permanent" anchor="left" className = {classes.drawer} >
-           <List className = {classes.list}>
+       <Drawer variant="permanent" anchor="left" className = {sideBarStyles.drawer} >
+           <List className = {sideBarStyles.list}>
                {listItems.map((listItem) => (
                     <ListItem>
                         <ListItemIcon>{listItem.icon}</ListItemIcon>
-                        <ListItemText primary={listItem.text} />
+                        <Link className={sideBarStyles.listItem} to={listItem.url}><ListItemText primary={listItem.text} />
+                        </Link>
                     </ListItem>
                ))}
            </List>

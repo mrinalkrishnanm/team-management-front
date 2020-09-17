@@ -1,29 +1,19 @@
+import { Router } from '@material-ui/icons';
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Dashboard from './Components/Dashboard/Dashboard.jsx';
 import SideBar from './Components/SideBar/SideBar.jsx';
-
+import Teammate from './Components/Teammate/Teammate.jsx';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+    <BrowserRouter>
+      <div className="App">
       <SideBar />
-      <Dashboard />
-    </div>
+      <Route path ='/dashboard' component={Dashboard} />
+      <Route path ='/teammate' component={Teammate} />
+      </div>
+    </BrowserRouter>
   );
 }
 
