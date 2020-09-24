@@ -1,14 +1,7 @@
 import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import ListItem from '@material-ui/core/ListItem';
-import List from '@material-ui/core/List';
-import ListItemText from '@material-ui/core/ListItemText';
+import { Drawer, ListItem, List, ListItemText, ListItemIcon } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import AccessibilityIcon from '@material-ui/icons/Accessibility';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import BarChartIcon from '@material-ui/icons/BarChart';
+import { Accessibility, Assignment, AssignmentInd, BarChart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,19 +24,19 @@ const useStyles = makeStyles((theme) => ({
 const listItems = [
     {
         text: "Dashboard",
-        icon: <BarChartIcon />,
+        icon: <BarChart />,
         url: "dashboard"
     },{
         text: "Teammate",
-        icon: <AccessibilityIcon />,
+        icon: <Accessibility />,
         url: "teammate"
     },{
         text: "Task",
-        icon: <AssignmentIcon />,
+        icon: <Assignment />,
         url: "task"
     },{
         text: "Assign Task",
-        icon: <AssignmentIndIcon />,
+        icon: <AssignmentInd />,
         url: "assign-task"
     }
 ]; 
@@ -56,7 +49,8 @@ const SideBar =  () => {
                {listItems.map((listItem) => (
                     <ListItem>
                         <ListItemIcon>{listItem.icon}</ListItemIcon>
-                        <Link className={sideBarStyles.listItem} to={listItem.url}><ListItemText primary={listItem.text} />
+                        <Link className={sideBarStyles.listItem} to={listItem.url}>
+                            <ListItemText primary={listItem.text} />
                         </Link>
                     </ListItem>
                ))}
