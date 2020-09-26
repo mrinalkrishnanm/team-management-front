@@ -1,9 +1,9 @@
 import React from 'react';
-import { Drawer, ListItem, List, ListItemText, ListItemIcon } from '@material-ui/core';
+import { Drawer, ListItem, List, ListItemText, ListItemIcon, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Accessibility, Assignment, AssignmentInd, BarChart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-
+import Firebase from 'firebase';
 const useStyles = makeStyles((theme) => ({
     drawer: {
       width: 240,
@@ -45,6 +45,7 @@ const SideBar =  () => {
     const sideBarStyles = useStyles();
     return (
        <Drawer variant="permanent" anchor="left" className = {sideBarStyles.drawer} >
+        <Divider />
            <List className = {sideBarStyles.list}>
                {listItems.map((listItem) => (
                     <ListItem>

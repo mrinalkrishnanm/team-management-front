@@ -1,36 +1,51 @@
 import React, { Component } from 'react';
-import  { Button, TextField, Grid } from '@material-ui/core';
-import { signInWithGoogle }from '../../firebase.js';
+import { Button, TextField, Grid, Container } from '@material-ui/core';
+import { signInWithGoogle, firebaseConfig } from '../../firebase.js';
+import { useHistory } from "react-router-dom";
 import firebase from 'firebase';
-class Signup extends Component { 
-    signup = (event) => {
+
+const Signup = () => {
+    const history = useHistory();
+    const signUpWithGoogle = (event) => {
         event.preventDefault();
-        const provider =  new firebase.auth.GoogleAuthProvider();
-        signInWithGoogle(provider);
+        const provider = new firebase.auth.GoogleAuthProvider();
+        signInWithGoogle(provider, firebaseConfig).then((response) => {
+            history.push("/dashboard");
+        }).catch((err) => {
+            console.log(err);
+        });
     }
-    render() {
-        return(
-            <React.Fragment>
-                <form noValidate autoComplete="off">
-                <Grid
+    return (
+        <React.Fragment>
+            <Grid
                 container
-                direction="row"
-                justify="center"
-                alignItems="center"
-                xs = {6}
-                spacing = {3}
-                >
-                    <TextField className="xs-6" label="Email" />
-                    <TextField className="xs-6" label="Password"/>
-                </Grid>
-                <div>
-                    <Button>Add User</Button>
-                </div>
+                spacing={1} alignItems='center'>
+                <form noValidate autoComplete="off">
+                    <Grid
+                        container item xs={12}>
+                        <Grid item>
+                            <TextField label="Email" />
+                        </Grid>
+                    </Grid>
+                    <Grid
+                        container item >
+                        <Grid item xs={12}>
+                            <TextField label="Password" />
+                        </Grid>
+                    </Grid>
+                    <Grid
+                        container item xs={12}>
+                        <Button color="primary">Add User</Button>
+                    </Grid>
+                    <Grid
+                        container item xs={12}>
+                        <Button variant="contained" color="primary" onClick={signUpWithGoogle}>Sign up With Google
+                            </Button>
+                    </Grid>
                 </form>
-                <Button variant="contained" color="primary" onClick={this.signup}>Sign up With Google</Button>
-            </React.Fragment>
-        )
-    }
+            </Grid>
+        </React.Fragment>
+    )
 }
 
 export default Signup;
