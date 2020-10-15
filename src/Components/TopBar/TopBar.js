@@ -5,31 +5,22 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(1),
-  },
-  title: {
-    flexGrow: 1,
-  },
+  appBar: {
+    width: `calc(100% - 240px)`,
+    marginLeft: 240,
+  }
 }));
 
 export default function TopBar() {
   const classes = useStyles();
 
   return (
-      <AppBar position="static" className={classes.root}>
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Team Management
-          </Typography>
-          <Button color="inherit">Logout</Button>
-        </Toolbar>
-      </AppBar>
+    <AppBar position="fixed" className={classes.appBar}>
+    <Toolbar>
+      <Typography variant="h6" noWrap>
+        Team Management App
+      </Typography>
+    </Toolbar>
+  </AppBar>
   );
 }

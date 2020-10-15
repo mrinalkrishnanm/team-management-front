@@ -9,15 +9,16 @@ import PrivateRoute from './Components/Utils/PrivateRoute/PrivateRoute';
 function App() {
   const currentUser = useContext(AuthContext);
   return (
+    <div className="App">
     <BrowserRouter>
-      <div className="App">
       <AuthContextProvider>
         <PrivateRoute path ='/dashboard' component={Dashboard} />
         <PrivateRoute path ='/teammate' component={Teammate} />
         <Route path ='/signup' component={Signup} /> 
       </AuthContextProvider>
+      </BrowserRouter>
+
       </div>
-    </BrowserRouter>
   );
 }
 
