@@ -8,6 +8,8 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     width: `calc(100% - 240px)`,
     marginLeft: 240,
+    backgroundColor: 'white',
+    color: 'black'
   }
 }));
 

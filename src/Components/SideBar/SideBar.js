@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         width: 90,
-        height: 90
+        height: 90,
+        textAlign: "center"
     }
 }));
 

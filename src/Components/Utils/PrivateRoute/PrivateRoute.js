@@ -10,12 +10,13 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 240,
     height: '100%',
     padding: theme.spacing(5),
+    marginTop: 50
     }
 }));
 const PrivateRoute = ({component: Component, ...rest}) => {
     const style = useStyles();
-    // const  { currentUser } = useContext(AuthContext);
-    const currentUser = true;
+    const  { currentUser } = useContext(AuthContext);
+    // const currentUser = true;
     return (
         // Show the component only when the user is logged in
         // Otherwise, redirect the user to /signin page
