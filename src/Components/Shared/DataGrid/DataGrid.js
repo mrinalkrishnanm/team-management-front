@@ -9,7 +9,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 // }
 const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: theme.palette.common.grey,
+      backgroundColor: theme.palette.common.black,
       color: theme.palette.common.white,
     },
     body: {
